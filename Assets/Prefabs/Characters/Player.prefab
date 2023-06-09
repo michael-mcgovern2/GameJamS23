@@ -103,7 +103,10 @@ MonoBehaviour:
   dashSpeed: 1
   dashCooldown: 0.5
   dashDynamics: {x: 5, y: 0.15, z: 0.1}
-  fireCooldown: 0.5
+  fireCooldown: 0.3
+  projectilePrefab: {fileID: 2056617450898199501, guid: 031f12c36474a1b498b4fd4ac11951f0, type: 3}
+  spawnOffset: 0.1
+  launchSpeed: 1.5
   raycastDist: 0
   contactFilter:
     useTriggers: 0
@@ -164,7 +167,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 10000
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 999e62b6fee13fe428a92e4cff867bdc, type: 2}
   m_IncludeLayers:
@@ -176,7 +179,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2547833033662227490
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +189,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2963990919541101813}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 999e62b6fee13fe428a92e4cff867bdc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

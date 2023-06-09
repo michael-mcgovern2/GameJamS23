@@ -12,6 +12,11 @@ public class Player : MonoBehaviour
     [Tooltip("Acceleration stats for dash as: (accel, accel time, decel time)")]
     public Vector3 dashDynamics = Vector3.zero;
     public float fireCooldown = 0.5f;
+    
+    [Header("Projectile Settings")]
+    public GameObject projectilePrefab;
+    public float spawnOffset;
+    public float launchSpeed;
 
     [Header("Physics Settings")]
     public float raycastDist = 1f;
@@ -25,10 +30,7 @@ public class Player : MonoBehaviour
     float dashAccel = 0f; // Acceleration to be added in the direction of velocity each update
     float accelTimer = 0f; // Timing counting down acceleration and deceleration stages of the dash
 
-    bool dashInput = false; // Player has requested a dash this update
     ActionTimer dashTimer;
-
-    bool fireInput = false; // Player has requested a fire this update
     ActionTimer fireTimer;
     
     List<RaycastHit2D> raycastHits = new List<RaycastHit2D>();
@@ -51,32 +53,7 @@ public class Player : MonoBehaviour
     {
         UpdateTimers();
 
-        if (dashTimer.actionAllowed && dashInput)
-        {
-            // Perform dash
-            velocity = lookDir - rigidBody.position;
-            velocity.Normalize();
-            velocity *= dashSpeed;
-
-            rigidBody.velocity = velocity;
-            // Put dash on cooldown
-            dashTimer.Start();
-            // Start dash dynamics
-            accelTimer = dashDynamics[1] + dashDynamics[2];
-        }
-
         ApplyAcceleration(Time.fixedDeltaTime);
-
-        if (fireTimer.actionAllowed && fireInput)
-        {
-            // Perform fire
-
-            fireTimer.Start();
-        }
-        
-        // Reset input variables
-        dashInput = false;
-        fireInput = false;
     }
 
     void UpdateTimers()
@@ -111,7 +88,28 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue input) // When the player clicks to fire
     {
-        fireInput = true;
+        if (fireTimer.actionAllowed)
+        {
+            // Perform fire
+            if (projectilePrefab != null)
+            {
+                GameObject g = Instantiate(projectilePrefab, rigidBody.position, Quaternion.identity);
+                
+                Rigidbody2D projectileRB = g.GetComponent<Rigidbody2D>();
+                if (projectileRB != null)
+                {
+                    Vector2 fireDirection = lookDir - rigidBody.position;
+                    fireDirection.Normalize();
+                    projectileRB.position = rigidBody.position + fireDirection * spawnOffset;
+                    projectileRB.velocity = fireDirection * launchSpeed;
+                }
+                else
+                {
+                    Debug.LogWarning("Failed to initialize projectile rigidbody");
+                }
+            }
+            fireTimer.Start();
+        }
     }
 
     void OnLook(InputValue input) // Follow the mouse to aim the player's dash and firing
@@ -122,6 +120,24 @@ public class Player : MonoBehaviour
 
     void OnDash(InputValue input) // When the player clicks to dash
     {
-        dashInput = true;
+        if (dashTimer.actionAllowed)
+        {
+            // Perform dash
+            velocity = lookDir - rigidBody.position;
+            velocity.Normalize();
+            velocity *= dashSpeed;
+
+            rigidBody.velocity = velocity;
+            // Put dash on cooldown
+            dashTimer.Start();
+            // Start dash dynamics
+            accelTimer = dashDynamics[1] + dashDynamics[2];
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        accelTimer = 0f;
+        dashAccel = 0f;
     }
 }
