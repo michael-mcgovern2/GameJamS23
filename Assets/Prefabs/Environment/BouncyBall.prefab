@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 590447888921063814}
   - component: {fileID: 8196759033138250317}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: BouncyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.0627451, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7448320714276181210}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4d8bc14e554fa5d44bd5cf4707704d7c, type: 2}
+  m_Material: {fileID: 6200000, guid: c4f7219681bc0a04d96b86d22d1bbdf1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -147,7 +147,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 4d8bc14e554fa5d44bd5cf4707704d7c, type: 2}
+  m_Material: {fileID: 6200000, guid: c4f7219681bc0a04d96b86d22d1bbdf1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
