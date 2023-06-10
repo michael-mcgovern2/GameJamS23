@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour
 {
     // Editor player settings
     [Header("Gameplay Settings")]
     public float dashSpeed = 1f;
-    public float dashCooldown = 0.5f;
+    public float dashCooldown = 0.5f; // Cooldown after arriving at a the destination before player can dash again
     [Tooltip("Acceleration stats for dash as: (accel, accel time, decel time)")]
     public Vector3 dashDynamics = Vector3.zero;
     public float fireCooldown = 0.5f;
-    
+    public Transform respawnPoint;
+
     [Header("Projectile Settings")]
     public GameObject projectilePrefab;
     public float spawnOffset;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     // Private player fields
     private Camera cam;
     Vector2 lookDir = Vector2.zero; // Position of mouse in room
+    Vector2 dashDest = Vector2.zero; // Position at which dash should end
     Vector2 velocity = Vector2.zero; // Direction of travel due of player
     float dashAccel = 0f; // Acceleration to be added in the direction of velocity each update
     float accelTimer = 0f; // Timing counting down acceleration and deceleration stages of the dash
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
     {
         UpdateTimers();
 
-        ApplyAcceleration(Time.fixedDeltaTime);
+        // ApplyAcceleration(Time.fixedDeltaTime);
     }
 
     void UpdateTimers()
@@ -141,12 +143,17 @@ public class Player : MonoBehaviour
         {
             Destroy(other.gameObject);
 
-            // TODO: kill player, restart level
+            KillPlayer();
         }
         else
         {
             accelTimer = 0f;
             dashAccel = 0f;
         }
+    }
+
+    public void KillPlayer()
+    {
+        transform.position = respawnPoint.position;
     }
 }

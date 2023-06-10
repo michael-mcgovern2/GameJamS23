@@ -33,7 +33,7 @@ public class BaseEnemyBehaviour : MonoBehaviour
         }
         else if (other.gameObject.tag == "Player")
         {
-            // TODO: kill player, restart level
+            PlayerManager.Instance.KillPlayer();
         }
     }
 

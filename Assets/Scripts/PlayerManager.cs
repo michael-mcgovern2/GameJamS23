@@ -31,4 +31,10 @@ public class PlayerManager : MonoBehaviour
 
         return player.transform.position;
     }
+
+    public void KillPlayer()
+    {
+        PlayerBehaviour pb = player.GetComponent<PlayerBehaviour>();
+        pb.KillPlayer();
+    }
 }
