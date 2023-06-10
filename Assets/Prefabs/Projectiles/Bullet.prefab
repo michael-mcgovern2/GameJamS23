@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8396160476314159100}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a5f97d750ed0c409e431ae2fc61b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numBounces: 3
-  damageDelay: 1
+  bulletHealth: 3
+  damageDelay: 0.1
   rigidBody: {fileID: 8396160476314159100}
 --- !u!70 &1840428502965514321
 CapsuleCollider2D:
