@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    public float numBounces;
+    public int bulletHealth;
     public float damageDelay; // Invincibility after contacting wall before projectile takes more damage
     private float damageTimer;
     public Rigidbody2D rigidBody;
@@ -24,15 +24,27 @@ public class BulletBehaviour : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (damageTimer == 0)
+        if (other.gameObject.tag == "Wall")
         {
-            numBounces--;
-            if (numBounces == 0)
+            WallBehaviour wallScript = other.gameObject.GetComponent<WallBehaviour>();
+
+            if (wallScript == null)
             {
-                Destroy(gameObject);
+                Debug.LogWarning("Failed to get WallBehaviour script on bullet collision with wall - make sure all walls have this script or subclass script");
+                return;
             }
 
-            damageTimer = damageDelay;
+            if (damageTimer == 0)
+            {
+                bulletHealth -= wallScript.damageToBullet;
+                if (bulletHealth <= 0)
+                {
+                    Destroy(gameObject);
+                }
+
+                damageTimer = damageDelay;
+            }
         }
+        
     }
 }

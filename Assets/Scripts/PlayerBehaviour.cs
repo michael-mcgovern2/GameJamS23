@@ -137,7 +137,16 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        accelTimer = 0f;
-        dashAccel = 0f;
+        if (other.gameObject.tag == "Projectile")
+        {
+            Destroy(other.gameObject);
+
+            // TODO: kill player, restart level
+        }
+        else
+        {
+            accelTimer = 0f;
+            dashAccel = 0f;
+        }
     }
 }

@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Exit
   - Death
+  - Projectile
+  - Wall
+  - Tile
+  - Module
+  - Enemy
   layers:
   - Default
   - TransparentFX

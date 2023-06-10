@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5935771641216717926}
   - component: {fileID: 4651917619394069235}
   - component: {fileID: 2547833033662227490}
+  - component: {fileID: 4766846242738459193}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2963990919541101813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,8 +106,8 @@ MonoBehaviour:
   dashDynamics: {x: 5, y: 0.15, z: 0.1}
   fireCooldown: 0.3
   projectilePrefab: {fileID: 2056617450898199501, guid: 031f12c36474a1b498b4fd4ac11951f0, type: 3}
-  spawnOffset: 0.1
-  launchSpeed: 1.5
+  spawnOffset: 0.35
+  launchSpeed: 2.5
   raycastDist: 0
   contactFilter:
     useTriggers: 0
@@ -225,3 +226,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
+--- !u!114 &4766846242738459193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963990919541101813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5235b0d6f53f2045a42e72907dd64a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
