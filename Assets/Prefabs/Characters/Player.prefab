@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6708dcb8a9e84c949ad48bed3a761083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 1.5
-  dashCooldown: 0.5
+  dashSpeed: 2
+  dashCooldown: 0.1
   dashDynamics: {x: 5, y: 0.15, z: 0.1}
   fireCooldown: 0.3
   respawnPoint: {fileID: 0}

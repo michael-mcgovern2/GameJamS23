@@ -25,9 +25,7 @@ public class levelExit : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        Debug.Log("Hello World");
         bool check = (gm != null);
-        Debug.Log(check);
     }
 
     // Update is called once per frame
