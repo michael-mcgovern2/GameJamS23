@@ -3,17 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Exit
+  - Death
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Death
   - Water
   - UI
   - 
   - 
-  - 
+  - MoveStop
   - 
   - 
   - 
