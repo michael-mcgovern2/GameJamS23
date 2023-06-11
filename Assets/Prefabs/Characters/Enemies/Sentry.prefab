@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2837049602470406093, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1803465
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837049602470406093, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+      propertyPath: m_Size.y
+      value: 0.14926903
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837049602470406093, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0017552599
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837049602470406093, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.057880603
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837049602470406093, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837049602470406093, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 5283520628083914201, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -65,19 +89,24 @@ PrefabInstance:
       value: Sentry
       objectReference: {fileID: 0}
     - target: {fileID: 8429965348528101502, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f97e96351e9f0c4fb6c4ecb7ddf44e1, type: 3}
+    - target: {fileID: 8429965348528101502, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
       propertyPath: m_Color.b
-      value: 0.74612856
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8429965348528101502, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
       propertyPath: m_Color.g
-      value: 0.74612856
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8429965348528101502, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
       propertyPath: m_Color.r
-      value: 0.764151
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4607332252671125920, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
+    - {fileID: 976053125246113296, guid: 33fddd969fc122646b5e5e4fd7eb3591, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -108,7 +137,7 @@ MonoBehaviour:
   health: 2
   invincibilityDuration: 0.1
   fireRate: 0.6
-  launchOffset: 0.35
+  launchOffset: 0.3
   projectileSpeed: 2.5
   projectilePrefab: {fileID: 2056617450898199501, guid: 031f12c36474a1b498b4fd4ac11951f0, type: 3}
 --- !u!50 &4971944159788481540
