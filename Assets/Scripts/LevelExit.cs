@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class levelExit : MonoBehaviour
 {
-    GameManager gm;
-
     public int nextLevel;
-
+    public float bonusTime;
     public bool dooropen;
 
     void OnTriggerEnter2D(Collider2D col)
@@ -17,15 +15,10 @@ public class levelExit : MonoBehaviour
             doorState();
             if (getDoorState())
             {
-                gm.LoadNextLevel(nextLevel);
+                PlayerManager.Instance.AddTime(bonusTime);
+                PlayerManager.Instance.LoadNextLevel(nextLevel);
             }
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        gm = FindObjectOfType<GameManager>();
-        bool check = (gm != null);
     }
 
     // Update is called once per frame
