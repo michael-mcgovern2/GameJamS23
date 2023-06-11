@@ -12,19 +12,20 @@ public class levelExit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        doorState();
-        if (getDoorState())
+        if (col.gameObject.tag == "Player")
         {
-            gm.LoadNextLevel(nextLevel);
+            doorState();
+            if (getDoorState())
+            {
+                gm.LoadNextLevel(nextLevel);
+            }
         }
     }
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        Debug.Log("Hello World");
         bool check = (gm != null);
-        Debug.Log(check);
     }
 
     // Update is called once per frame

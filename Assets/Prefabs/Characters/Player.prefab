@@ -101,12 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6708dcb8a9e84c949ad48bed3a761083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 1.5
-  dashCooldown: 0.5
+  dashSpeed: 2
+  dashCooldown: 0.1
   dashDynamics: {x: 5, y: 0.15, z: 0.1}
   fireCooldown: 0.3
+  respawnPoint: {fileID: 0}
   projectilePrefab: {fileID: 2056617450898199501, guid: 031f12c36474a1b498b4fd4ac11951f0, type: 3}
-  spawnOffset: 0.35
+  spawnOffset: 0.25
   launchSpeed: 2.5
   raycastDist: 0
   contactFilter:
@@ -224,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.15}
+  m_Size: {x: 0.14, y: 0.14}
   m_EdgeRadius: 0
 --- !u!114 &4766846242738459193
 MonoBehaviour:

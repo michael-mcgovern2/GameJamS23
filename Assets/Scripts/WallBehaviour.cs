@@ -40,7 +40,8 @@ public class WallBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Projectile" && !indestructible && other.contactCount > 0)
         {
             ContactPoint2D contactPoint = other.GetContact(0);
-            Vector3 point = new Vector3(contactPoint.point.x, contactPoint.point.y, 0); // This requires that our tilemaps all be at z=0
+            Vector2 point2d = contactPoint.point - other.rigidbody.velocity * 0.1f; // Simulate projectiles position if it didnt collide for better tile accuracy
+            Vector3 point = new Vector3(point2d.x, point2d.y, 0); // This requires that our tilemaps all be at z=0
 
             Vector3Int cell = tilemap.WorldToCell(point);
 

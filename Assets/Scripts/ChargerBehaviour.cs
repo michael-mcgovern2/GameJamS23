@@ -14,7 +14,6 @@ public class ChargerBehaviour : BaseEnemyBehaviour
     private Vector2 chargeDest; // Position where player was detected and where charger will dash to
 
     private Rigidbody2D rigidBody;
-    private List<RaycastHit2D> castResults = new List<RaycastHit2D>();
 
     void Start()
     {
@@ -22,8 +21,10 @@ public class ChargerBehaviour : BaseEnemyBehaviour
         if (rigidBody == null)
         {
             Debug.LogError("Charger enemy was initialized without rigidbody component");
+            Destroy(gameObject);
         }
     }
+
     // Update is called once per frame
     new protected void FixedUpdate()
     {
@@ -31,27 +32,12 @@ public class ChargerBehaviour : BaseEnemyBehaviour
 
         if (cooldownTimer == 0) // Look for player
         {
-            // raycast to player to decide whether or not to charge
-            Vector2 playerPos = PlayerManager.Instance.GetPlayerPosition();
-            Vector2 chargerPos = transform.position;
-
-            int numHits = rigidBody.Cast(
-                playerPos - chargerPos,
-                castResults
-            );
-
-            if (numHits > 0)
+            if (CanSeePlayer(rigidBody))
             {
-                castResults.Sort((hit1, hit2) => hit1.distance.CompareTo(hit2.distance));
-                RaycastHit2D firstHit = castResults[0];
-
-                if (firstHit.collider.gameObject.tag == "Player")
-                {
-                    // Queue a dash towards this location after chargeDelay seconds
-                    chargeDest = playerPos;
-                    delayTimer = chargeDelay; // delay the launch
-                    cooldownTimer = chargeCooldown; // disable charge
-                }
+                // Queue a dash towards this location after chargeDelay seconds
+                chargeDest = PlayerManager.Instance.GetPlayerPosition();
+                delayTimer = chargeDelay; // delay the launch
+                cooldownTimer = chargeCooldown; // disable charge
             }
         }
         else if (delayTimer == 0) // Start dash towards player

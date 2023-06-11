@@ -33,7 +33,33 @@ public class BaseEnemyBehaviour : MonoBehaviour
         }
         else if (other.gameObject.tag == "Player")
         {
-            // TODO: kill player, restart level
+            PlayerManager.Instance.KillPlayer();
         }
+    }
+
+    protected bool CanSeePlayer(Rigidbody2D castBody)
+    {
+        List<RaycastHit2D> castResults = new List<RaycastHit2D>();
+        // raycast to player to decide whether or not to charge
+        Vector2 playerPos = PlayerManager.Instance.GetPlayerPosition();
+        Vector2 enemyPos = transform.position;
+
+        int numHits = castBody.Cast(
+            playerPos - enemyPos,
+            castResults
+        );
+
+        if (numHits > 0)
+        {
+            castResults.Sort((hit1, hit2) => hit1.distance.CompareTo(hit2.distance));
+            RaycastHit2D firstHit = castResults[0];
+
+            if (firstHit.collider.gameObject.tag == "Player")
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
