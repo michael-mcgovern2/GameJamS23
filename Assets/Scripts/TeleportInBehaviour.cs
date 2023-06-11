@@ -5,6 +5,7 @@ using UnityEngine;
 public class TeleportInBehaviour : MonoBehaviour
 {
     public Transform teleportOut;
+    public bool isWall = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,11 @@ public class TeleportInBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        // check for specific type, or is this good enough?
-        collision.transform.SetPositionAndRotation(teleportOut.position, teleportOut.rotation);
+        string tag = collision.tag;
+
+        if (tag == "Player" || tag == "Enemy" || (isWall && tag == "Projectile"))
+        {
+            collision.transform.SetPositionAndRotation(teleportOut.position, teleportOut.rotation);
+        }
     }
 }
