@@ -101,14 +101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6708dcb8a9e84c949ad48bed3a761083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 2
+  dashSpeed: 2.75
   dashCooldown: 0.1
   dashDynamics: {x: 5, y: 0.15, z: 0.1}
   fireCooldown: 0.3
   respawnPoint: {fileID: 0}
   projectilePrefab: {fileID: 2056617450898199501, guid: 031f12c36474a1b498b4fd4ac11951f0, type: 3}
   spawnOffset: 0.25
-  launchSpeed: 2.5
+  launchSpeed: 3.25
   raycastDist: 0
   contactFilter:
     useTriggers: 0
@@ -239,4 +239,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5235b0d6f53f2045a42e72907dd64a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTime: 10
+  restartTime: 3
