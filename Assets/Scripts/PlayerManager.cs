@@ -55,7 +55,8 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Failed to find UI Manager for level for game over");
+                Debug.LogWarning("Failed to find UI Manager for level for game over");
+                return;
             }
 
             currentUI.timer.SetActive(false);
