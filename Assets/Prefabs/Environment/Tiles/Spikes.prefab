@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987877436638585118}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -260,20 +260,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 8461962576495258795}
     m_ColliderPaths:
-    - - X: 10000000
-        Y: 0
-      - X: 0
-        Y: 0
-      - X: 0
-        Y: -10000000
-      - X: 10000000
-        Y: -10000000
+    - - X: 7812500
+        Y: -2187500
+      - X: 2187500
+        Y: -2187500
+      - X: 2187500
+        Y: -7812500
+      - X: 7812500
+        Y: -7812500
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.99997073, y: -1}
-      - {x: 0.99997073, y: 0}
-      - {x: 0, y: -0.000029300001}
-      - {x: 0.000029300001, y: -1}
+    - - {x: 0.78122073, y: -0.78125}
+      - {x: 0.78122073, y: -0.21875}
+      - {x: 0.21875, y: -0.2187793}
+      - {x: 0.2187793, y: -0.78125}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -290,5 +290,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75135ce8657f50e4fa812c083907fcc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  respawnPoint: {fileID: 0}
