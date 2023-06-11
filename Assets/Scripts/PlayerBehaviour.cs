@@ -13,6 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Vector3 dashDynamics = Vector3.zero;
     public float fireCooldown = 0.5f;
     public Transform respawnPoint;
+    public float initialAngle = 90f;
 
     [Header("Projectile Settings")]
     public GameObject projectilePrefab;
@@ -29,16 +30,19 @@ public class PlayerBehaviour : MonoBehaviour
     Vector2 lookDir = Vector2.zero; // Position of mouse in room
     Vector2 dashDest = Vector2.zero; // Position at which dash should end
     Vector2 velocity = Vector2.zero; // Direction of travel due of player
+    private bool isDashing = false;
 
     ActionTimer dashTimer;
     ActionTimer fireTimer;
     
     List<RaycastHit2D> raycastHits = new List<RaycastHit2D>();
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         Init();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     void Init()
@@ -53,11 +57,22 @@ public class PlayerBehaviour : MonoBehaviour
     {
         UpdateTimers();
 
+        if (fireTimer.timeRemaining == 0f)
+        {
+            anim.SetBool("isFiring", false);
+        }
+
         if (rigidBody.velocity.magnitude > 0 && (rigidBody.position - dashDest).magnitude < 0.1f) // If dash has been stopped or arrived at destination
         {
             rigidBody.velocity = Vector2.zero;
             dashTimer.Start(); // pause here until dash cooldown is over
+            isDashing = false;
         }
+
+        // Rotate the sprite towards the mouse
+        Vector2 v = lookDir - rigidBody.position;
+        float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - initialAngle, Vector3.forward);
     }
 
     void UpdateTimers()
@@ -87,6 +102,8 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     Debug.LogWarning("Failed to initialize projectile rigidbody");
                 }
+
+                anim.SetBool("isFiring", true);
             }
             fireTimer.Start();
         }
@@ -111,6 +128,7 @@ public class PlayerBehaviour : MonoBehaviour
             rigidBody.velocity = velocity;
             // Prevent dashing
             dashTimer.actionAllowed = false;
+            isDashing = true;
         }
     }
 
@@ -129,11 +147,17 @@ public class PlayerBehaviour : MonoBehaviour
         if (dashTimer.timeRemaining == 0 && !dashTimer.actionAllowed)
         {
             dashTimer.Start(); // Allow player to redash if they hit something
+            isDashing = false;
         }
     }
 
     public void KillPlayer()
     {
+        if (isDashing)
+        {
+            return;
+        }
+        
         rigidBody.position = respawnPoint.position;
         rigidBody.velocity = Vector2.zero;
         dashTimer.actionAllowed = true;
