@@ -30,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
     Vector2 lookDir = Vector2.zero; // Position of mouse in room
     Vector2 dashDest = Vector2.zero; // Position at which dash should end
     Vector2 velocity = Vector2.zero; // Direction of travel due of player
+    private bool isDashing = false;
 
     ActionTimer dashTimer;
     ActionTimer fireTimer;
@@ -65,6 +66,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             rigidBody.velocity = Vector2.zero;
             dashTimer.Start(); // pause here until dash cooldown is over
+            isDashing = false;
         }
 
         // Rotate the sprite towards the mouse
@@ -126,6 +128,7 @@ public class PlayerBehaviour : MonoBehaviour
             rigidBody.velocity = velocity;
             // Prevent dashing
             dashTimer.actionAllowed = false;
+            isDashing = true;
         }
     }
 
@@ -144,11 +147,17 @@ public class PlayerBehaviour : MonoBehaviour
         if (dashTimer.timeRemaining == 0 && !dashTimer.actionAllowed)
         {
             dashTimer.Start(); // Allow player to redash if they hit something
+            isDashing = false;
         }
     }
 
     public void KillPlayer()
     {
+        if (isDashing)
+        {
+            return;
+        }
+        
         rigidBody.position = respawnPoint.position;
         rigidBody.velocity = Vector2.zero;
         dashTimer.actionAllowed = true;
