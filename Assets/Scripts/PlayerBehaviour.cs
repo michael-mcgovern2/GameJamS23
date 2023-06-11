@@ -13,6 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Vector3 dashDynamics = Vector3.zero;
     public float fireCooldown = 0.5f;
     public Transform respawnPoint;
+    public float initialAngle = 90f;
 
     [Header("Projectile Settings")]
     public GameObject projectilePrefab;
@@ -34,11 +35,13 @@ public class PlayerBehaviour : MonoBehaviour
     ActionTimer fireTimer;
     
     List<RaycastHit2D> raycastHits = new List<RaycastHit2D>();
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         Init();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     void Init()
@@ -53,11 +56,21 @@ public class PlayerBehaviour : MonoBehaviour
     {
         UpdateTimers();
 
+        if (fireTimer.timeRemaining == 0f)
+        {
+            anim.SetBool("isFiring", false);
+        }
+
         if (rigidBody.velocity.magnitude > 0 && (rigidBody.position - dashDest).magnitude < 0.1f) // If dash has been stopped or arrived at destination
         {
             rigidBody.velocity = Vector2.zero;
             dashTimer.Start(); // pause here until dash cooldown is over
         }
+
+        // Rotate the sprite towards the mouse
+        Vector2 v = lookDir - rigidBody.position;
+        float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - initialAngle, Vector3.forward);
     }
 
     void UpdateTimers()
@@ -87,6 +100,8 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     Debug.LogWarning("Failed to initialize projectile rigidbody");
                 }
+
+                anim.SetBool("isFiring", true);
             }
             fireTimer.Start();
         }
