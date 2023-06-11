@@ -7,6 +7,8 @@ public class BaseEnemyBehaviour : MonoBehaviour
     public int health; // Number of bullets it takes to kill the enemy
     public float invincibilityDuration; // Time between impacts where enemy is immune to damage
 
+    public ContactFilter2D contactFilter;
+
     private float invincibilityTimer = 0f;
 
     protected void FixedUpdate()
@@ -46,7 +48,9 @@ public class BaseEnemyBehaviour : MonoBehaviour
 
         int numHits = castBody.Cast(
             playerPos - enemyPos,
-            castResults
+            contactFilter,
+            castResults,
+            Mathf.Infinity
         );
 
         if (numHits > 0)
