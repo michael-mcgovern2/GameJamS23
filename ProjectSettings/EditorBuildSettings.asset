@@ -5,25 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Room1(Grigorii).unity
     guid: 1693c39bcadf9a643abe933b5c7e9fbf
   - enabled: 1
-    path: Assets/Scenes/Room1.unity
-    guid: 01194a4ac69a029439b998dceb8c9e46
-  - enabled: 1
     path: Assets/Scenes/Room2(Grigorii).unity
     guid: cc2ee9758b805e0458d63c00c4c277fe
-  - enabled: 1
-    path: Assets/Scenes/Room2.unity
-    guid: e339ea51c45dccf4bb22b6cf71e2b7ad
   - enabled: 1
     path: Assets/Scenes/MichaelRoom.unity
     guid: 9690b70a1c57cef479d33eebfc359a16
   - enabled: 1
     path: Assets/Scenes/Room3(Grigorii).unity
     guid: ac8100bd2c320bb498e515ad5eb3c935
+  - enabled: 1
+    path: Assets/Scenes/Room4(Grigorii).unity
+    guid: 05d97619c9fcbea4188d3ce3c818a723
+  - enabled: 1
+    path: Assets/Scenes/Room7(Grigorii).unity
+    guid: d61731b132292fd488dafcc127deb1af
+  - enabled: 1
+    path: Assets/Scenes/Room5(Grigorii).unity
+    guid: 1170d77843c8bd2478ae6d41c575284d
+  - enabled: 1
+    path: Assets/Scenes/Room6(Grigorii).unity
+    guid: 89276d1dfb42914479073d6caf292493
   m_configObjects: {}

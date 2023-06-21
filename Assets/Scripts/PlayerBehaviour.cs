@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -25,12 +26,15 @@ public class PlayerBehaviour : MonoBehaviour
     public ContactFilter2D contactFilter;
     public Rigidbody2D rigidBody; // Represents the players location for physics and collisions
 
+
+
     // Private player fields
     private Camera cam;
     Vector2 lookDir = Vector2.zero; // Position of mouse in room
     Vector2 dashDest = Vector2.zero; // Position at which dash should end
     Vector2 velocity = Vector2.zero; // Direction of travel due of player
     private bool isDashing = false;
+    public bool isBouncing = false;
 
     ActionTimer dashTimer;
     ActionTimer fireTimer;

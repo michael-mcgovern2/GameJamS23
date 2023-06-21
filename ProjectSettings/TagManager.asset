@@ -11,6 +11,7 @@ TagManager:
   - Tile
   - Module
   - Enemy
+  - Spring
   layers:
   - Default
   - TransparentFX

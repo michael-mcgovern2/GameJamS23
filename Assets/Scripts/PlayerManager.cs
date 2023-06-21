@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
-    public static float startTime = 10f;
+    public static float startTime = 100f;
 
     public GameObject player { get; private set; }
     public static float gameTimer { get; private set; } = startTime; // Time until player loses this run, stored in seconds
