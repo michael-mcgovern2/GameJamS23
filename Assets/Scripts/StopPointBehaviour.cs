@@ -18,6 +18,8 @@ public class StopPointBehaviour : MonoBehaviour
         {
             playerScript.isBouncing = false;
             rigidBody.velocity = Vector2.zero;
+            playerScript.isDashing = false;
+            playerScript.dashTimer.actionAllowed = true;
         }
     }
 }

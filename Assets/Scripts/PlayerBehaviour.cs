@@ -33,11 +33,11 @@ public class PlayerBehaviour : MonoBehaviour
     Vector2 lookDir = Vector2.zero; // Position of mouse in room
     Vector2 dashDest = Vector2.zero; // Position at which dash should end
     Vector2 velocity = Vector2.zero; // Direction of travel due of player
-    private bool isDashing = false;
+    public bool isDashing = false;
     public bool isBouncing = false;
 
-    ActionTimer dashTimer;
-    ActionTimer fireTimer;
+    public ActionTimer dashTimer;
+    public ActionTimer fireTimer;
     
     List<RaycastHit2D> raycastHits = new List<RaycastHit2D>();
     private Animator anim;
